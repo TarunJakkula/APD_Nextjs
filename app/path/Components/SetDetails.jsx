@@ -53,10 +53,10 @@ export default function SetDetails({ data, selected, step }) {
       </span>
       <br />
       <span
-        className={`animate-slide4 text-white lg:text-[30px] text-[20px] max-w-[400px] flex flex-col `}
+        className={`animate-slide4 text-white lg:text-[30px] text-[20px] w-full flex flex-col items-center `}
       >
         <span>Path:</span>
-        <span className="flex gap-[5px] flex-wrap justify-center">
+        <span className="flex gap-[5px] flex-wrap justify-center max-w-[200px]">
           {path.map((ele, index) => {
             return (
               <span key={index} className="text-nowrap">

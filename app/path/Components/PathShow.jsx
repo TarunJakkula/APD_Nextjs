@@ -46,7 +46,7 @@ export default function PathShow({ children }) {
                 step={step}
               />
             </div>
-            <div className=" lg:px-[15px] px-[10px] lg:py-[15px] py-[10px] bg-[#212121] rounded-xl text-center h-[35vw] min-h-[300px]">
+            <div className=" lg:px-[15px] px-[10px] lg:py-[15px] py-[10px] bg-[#212121] rounded-xl text-center min-h-[35vw] ">
               <div className=" flex flex-col justify-center rounded-xl bg-[#121212] px-[30px] py-[40px] h-full gap-[20px]">
                 <PathSetSelector
                   data={gridDetails.data}
