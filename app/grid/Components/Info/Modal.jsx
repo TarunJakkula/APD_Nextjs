@@ -9,7 +9,7 @@ function Modal({ showModal }) {
         key="modal"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ scale: 0, opacity: 0 }}
+        exit={{ scale: 0.5, opacity: 0 }}
         className="bg-[#212121] md:px-10 px-6 md:w-[600px] w-[300px] md:py-10 py-8 flex flex-col gap-[20px] justify-center  rounded-xl relative"
       >
         <motion.button

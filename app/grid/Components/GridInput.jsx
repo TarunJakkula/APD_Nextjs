@@ -54,35 +54,39 @@ export default function GridInputPage({ colors }) {
 
   return (
     <>
-      {!obstacle && (
-        <div className="flex flex-col gap-[20px] items-center ">
-          <button
-            className={`${
-              filled ? "bg-white text-black" : "bg-[#121212] text-white"
-            } rounded-md py-[10px] font-bold w-[80%]`}
-            disabled={!filled}
-            onClick={handleClick}
-          >
-            {filled ? "Submit" : "Disabled"}
-          </button>
-          <div className="bg-[#121212] px-[20px] flex flex-col gap-[30px] justify-between py-[20px] rounded-xl w-[300px] min-w-[250px]">
-            <Sets
-              n={n}
-              arr={arr}
-              setArr={setArr}
-              focus={focus}
-              setFocus={setFocus}
-              colors={colors}
-            />
-          </div>
-        </div>
-      )}
-
       {obstacle ? (
-        <div className=" flex justify-center items-center lg:flex-row flex-col gap-[70px] ">
-          <span className="text-white font-bold lg:text-[30px] text-[25px] ">
-            Select Obstacles
-          </span>
+        <div className=" flex justify-center items-center lg:flex-row flex-col gap-y-5 gap-x-14">
+          <div className="flex flex-col gap-y-5">
+            <span className="text-white font-bold lg:text-[30px] text-[25px] ">
+              Select Obstacles
+            </span>
+            (
+            <button
+              disabled={obstacles.size > n - 1}
+              onClick={() => {
+                if (obstacles.size > n - 1) return;
+                if (
+                  obstacles.size === 0 &&
+                  !confirm(
+                    "No obstacles are given! Are you sure you want to submit?"
+                  )
+                )
+                  return;
+                confirm(
+                  "No more changes to obstacles are allowed. Want to continue?"
+                ) && setObstacle(false);
+              }}
+              className={`transition-all ${
+                obstacles.size > n - 1
+                  ? "bg-[#121212] border-2 border-white"
+                  : " hover:border-blue-400 border-2 bg-[#212121] hover:cursor-pointer"
+              } border-transparent shadow-sm md:text-[1.4rem] text-[1.05rem]  rounded-md text-[#eeeeee] px-[20px] py-[5px]`}
+            >
+              {obstacles.size > n - 1 ? "Disabled" : "Confirm"}
+            </button>
+            )
+          </div>
+
           <div className="w-[35vw] h-[35vw] min-w-[300px] min-h-[300px] ">
             <ObstacleGrid
               n={n}
@@ -90,68 +94,64 @@ export default function GridInputPage({ colors }) {
               setObstacles={setObstacles}
             />
           </div>
-          {obstacles.size > n - 1 ? (
-            <button
-              disabled
-              className=" border-transparent shadow-sm md:text-[1.4rem] text-[1.05rem] bg-[#121212] rounded-md text-[#eeeeee] px-[20px] py-[5px]"
-            >
-              Disabled
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                if (obstacles.size === 0) {
-                  if (
-                    !confirm(
-                      "No obstacles are given! Are you sure you want to submit?"
-                    )
-                  )
-                    return;
-                }
-                confirm(
-                  "No more changes to obstacles are allowed. Want to continue?"
-                ) && setObstacle(false);
-              }}
-              className=" hover:border-blue-400 border-transparent shadow-sm transition-all md:text-[1.4rem] text-[1.05rem]  border-2 bg-[#212121] rounded-md text-[#eeeeee] px-[20px] py-[5px] hover:cursor-pointer"
-            >
-              Confirm
-            </button>
-          )}
         </div>
       ) : (
-        <div className="w-[35vw] h-[40vw] min-w-[300px] min-h-[350px] flex flex-col justify-evenly items-center">
-          {focus && (
-            <div className="animate-popOut h-[5vw] w-full min-h-[50px] flex justify-center items-center relative">
-              <Selector
-                goalSelection={goalSelection}
-                setGoalSelection={setGoalSelection}
-                showModal={showModal}
+        <>
+          <div className="flex flex-col gap-[20px] items-center ">
+            <button
+              className={`${
+                filled ? "bg-white text-black" : "bg-[#121212] text-white"
+              } rounded-md py-[10px] font-bold w-[80%]`}
+              disabled={!filled}
+              onClick={handleClick}
+            >
+              {filled ? "Submit" : "Disabled"}
+            </button>
+            <div className="bg-[#121212] px-[20px] flex flex-col gap-[30px] justify-between py-[20px] rounded-xl w-[300px] min-w-[250px]">
+              <Sets
+                n={n}
+                arr={arr}
+                setArr={setArr}
+                focus={focus}
+                setFocus={setFocus}
+                colors={colors}
               />
             </div>
-          )}
-          {focus !== null ? (
-            <Grid
-              n={n}
-              focus={focus}
-              arr={arr}
-              setArr={setArr}
-              obstacles={obstacles}
-              goalSelection={goalSelection}
-            />
-          ) : (
-            <div
-              className={`animate-slide1NoOpacityBack rounded-xl flex flex-col gap-[5px] bg-[#212121] px-[10px] py-[10px] w-full h-[35vw] min-h-[300px]`}
-            >
-              <div className=" w-full h-full bg-[#121212] rounded-lg">
-                <span className="text-[#aaaaaa] xl:text-[1.5em] lg:text-[1.1em] text-[0.8em] h-full w-full flex justify-center items-center">
-                  Please select a set to show grid
-                </span>
+          </div>
+          <div className="w-[35vw] h-[40vw] min-w-[300px] min-h-[350px] flex flex-col justify-evenly items-center">
+            {focus && (
+              <div className="animate-popOut h-[5vw] w-full min-h-[50px] flex justify-center items-center relative">
+                <Selector
+                  goalSelection={goalSelection}
+                  setGoalSelection={setGoalSelection}
+                  showModal={showModal}
+                />
               </div>
-            </div>
-          )}
-        </div>
+            )}
+            {focus !== null ? (
+              <Grid
+                n={n}
+                focus={focus}
+                arr={arr}
+                setArr={setArr}
+                obstacles={obstacles}
+                goalSelection={goalSelection}
+              />
+            ) : (
+              <div
+                className={`animate-slide1NoOpacityBack rounded-xl flex flex-col gap-[5px] bg-[#212121] px-[10px] py-[10px] w-full h-[35vw] min-h-[300px]`}
+              >
+                <div className=" w-full h-full bg-[#121212] rounded-lg">
+                  <span className="text-[#aaaaaa] xl:text-[1.5em] lg:text-[1.1em] text-[0.8em] h-full w-full flex justify-center items-center">
+                    Please select a set to show grid
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+        </>
       )}
-      <AnimatePresence initial={true} mode="popLayout">
+      <AnimatePresence initial={true}>
         {modal && <Modal showModal={showModal} />}
       </AnimatePresence>
     </>

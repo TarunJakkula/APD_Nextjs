@@ -18,23 +18,19 @@ export default function SetDetails({ data, selected, step }) {
   }, []);
 
   function count() {
-    let countNo = 0;
-    Object.values(data[selected.index].path).forEach((ele) => {
-      countNo += ele.length;
-    });
-    return countNo - 1;
+    return path.length - 1;
   }
 
   return (
-    <div>
+    <div className="md:h-[450px] h-[240px] flex flex-col gap-5 overflow-y-auto md:w-[400px] w-[250px]">
       <span className="animate-slide4 text-white lg:text-[30px] text-[20px] ">
-        Cost : <span className="text-blue-400">{cost} steps</span>
+        <span>Cost :</span> <span className="text-blue-400">{cost} steps</span>
       </span>
-      <br />
+
       <span
         className={`animate-slide4 text-white lg:text-[30px] text-[20px] text-balance `}
       >
-        Status:{" "}
+        <span>Status: </span>
         <span
           className={`${
             visitedAllGoals === null
@@ -51,27 +47,11 @@ export default function SetDetails({ data, selected, step }) {
             : "Failed to visit all Goals"}
         </span>
       </span>
-      <br />
+
       <span
-        className={`animate-slide4 text-white lg:text-[30px] text-[20px] w-full flex flex-col items-center `}
+        className={`animate-slide4 text-white lg:text-[30px] text-[20px] text-balance `}
       >
-        <span>Path:</span>
-        <span className="flex gap-[5px] flex-wrap justify-center max-w-[200px]">
-          {path.map((ele, index) => {
-            return (
-              <span key={index} className="text-nowrap">
-                {`${ele} ${path.length - 1 !== index ? "-" : ""} `}
-              </span>
-            );
-          })}
-        </span>
-      </span>
-      <br />
-      <br />
-      <span
-        className={`animate-slide4 text-white lg:text-[30px] text-[20px] text-balance border-t-2 border-t-white pt-[10px]`}
-      >
-        Step:{" "}
+        <span>Step: </span>
         {step === null ? (
           <ul className="text-white">
             <li>cell: None</li>
@@ -86,6 +66,20 @@ export default function SetDetails({ data, selected, step }) {
             </li>
           </ul>
         )}
+      </span>
+      <span
+        className={`animate-slide4 text-white lg:text-[30px] text-[20px] w-full flex flex-col items-center `}
+      >
+        <span>Path:</span>
+        <span className="flex gap-[5px] flex-wrap justify-center  w-full ">
+          {path.map((ele, index) => {
+            return (
+              <span key={index} className="text-nowrap">
+                {`${ele} ${path.length - 1 !== index ? "-" : ""} `}
+              </span>
+            );
+          })}
+        </span>
       </span>
     </div>
   );

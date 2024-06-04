@@ -39,7 +39,7 @@ export default function Sets({ n, arr, setArr, focus, setFocus, colors }) {
                   } hover:border-blue-400 border-2 border-transparent items-center relative px-[20px] justify-between rounded-lg h-[80px] `}
                 >
                   <div className="flex gap-[10px] items-center">
-                    <div className={`${obj.color[1]} h-[30px] rounded-md`}>
+                    <div className={`${obj.color[1]} w-5 h-5 rounded-md`}>
                       &nbsp;
                     </div>
                     <input
@@ -64,7 +64,7 @@ export default function Sets({ n, arr, setArr, focus, setFocus, colors }) {
                 </button>
                 {arr.length > 1 && edit && (
                   <button
-                    className={`animate-popOut text-black bg-white my-[20px] px-[6px] font-bold rounded-md transition-all text-center`}
+                    className={`animate-popOut text-black bg-white px-[6px] font-bold rounded-md transition-all text-center`}
                     onClick={() => {
                       let tempArr = [...arr];
                       colors[arr[index].color[0]] = [

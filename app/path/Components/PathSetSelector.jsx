@@ -25,7 +25,7 @@ export default function PathSetSelector({
           selected.index === 0
             ? "text-[#121212]"
             : "text-white hover:bg-white hover:text-black"
-        } rounded-full px-[2px] transition-all`}
+        } rounded-md px-[2px] transition-all`}
         onClick={handleBack}
         disabled={selected.index === 0}
       >
@@ -39,7 +39,7 @@ export default function PathSetSelector({
           selected.index + 1 === data.length
             ? "text-[#121212]"
             : "text-white hover:bg-white hover:text-black"
-        } rounded-full px-[2px] transition-all`}
+        } rounded-md px-[2px] transition-all`}
         onClick={handleNext}
         disabled={selected.index + 1 === data.length}
       >

@@ -35,7 +35,7 @@ export default function PathShow({ children }) {
     <>
       {gridDetails !== null ? (
         <>
-          <div className="flex flex-wrap-reverse items-center justify-evenly gap-[20px] w-full">
+          <div className="flex flex-wrap items-center justify-evenly gap-[20px] w-full">
             <div className="animate-slide1NoOpacity w-[35vw] h-[35vw] min-w-[300px] min-h-[350px] flex flex-col justify-evenly items-center">
               <PathGrid
                 n={gridDetails.n}
@@ -46,8 +46,8 @@ export default function PathShow({ children }) {
                 step={step}
               />
             </div>
-            <div className=" lg:px-[15px] px-[10px] lg:py-[15px] py-[10px] bg-[#212121] rounded-xl text-center min-h-[35vw] ">
-              <div className=" flex flex-col justify-center rounded-xl bg-[#121212] px-[30px] py-[40px] h-full gap-[20px]">
+            <div className=" lg:px-[15px] px-[10px] lg:py-[15px] py-[10px] bg-[#212121] rounded-xl text-center min-h-[33vw] ">
+              <div className=" flex flex-col justify-evenly rounded-xl bg-[#121212] px-[10px] py-[40px] h-full gap-[20px]">
                 <PathSetSelector
                   data={gridDetails.data}
                   setSelected={setSelected}

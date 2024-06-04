@@ -89,7 +89,7 @@ export default function Grid({
                           n > 6 ? "text-[0.7em]" : null
                         } text-white`}
                       >
-                        Obstacle
+                        Obs
                       </span>
                     ) : arr[focus.index] !== undefined &&
                       arr[focus.index].start === rIndex + "," + cIndex ? (

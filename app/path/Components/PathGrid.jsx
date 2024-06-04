@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import * as imgCollection from "@/app/ui/images";
 import createGrid from "@/app/util/createGrid";
 import GridCell from "./GridCell";
@@ -17,7 +16,7 @@ const arrowObjBlack = {
   D: imgCollection.ADB,
   R: imgCollection.ARB,
   L: imgCollection.ALB,
-  END: imgCollection.STOP,
+  END: imgCollection.STOPB,
 };
 
 export default function PathGrid({
@@ -68,7 +67,7 @@ export default function PathGrid({
                           n > 6 ? "text-[0.7em]" : null
                         } text-white`}
                       >
-                        Obstacle
+                        Obs
                       </span>
                     ) : data[selected.index].path[rIndex + "," + cIndex] !==
                       undefined ? (

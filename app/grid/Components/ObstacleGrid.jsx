@@ -48,7 +48,7 @@ function ObstacleGrid({ n, obstacles, setObstacles }) {
                           n > 6 ? "text-[0.7em]" : null
                         } text-white`}
                       >
-                        Obstacle
+                        Obs
                       </span>
                     ) : (
                       rIndex * n + cIndex + 1
