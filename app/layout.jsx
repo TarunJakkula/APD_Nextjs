@@ -4,6 +4,8 @@ import Header from "./Components/Header";
 
 export const metadata = {
   title: "Autonomous Pesticide Deployment",
+  description:
+    "A Visual interactive environment of QLearning model built by Tarun Jakkula, B Sumvit and P.S.S Bharadwaj. Website developed by Tarun Jakkula ( Full-Stack Developer )",
   icons: {
     icon: "/favicon.ico",
   },
